@@ -18,7 +18,7 @@ from flask import Flask, jsonify, request, session
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins=["https://aria-chatapp.vercel.app"])
+CORS(app, supports_credentials=True, origins="*")
 
 load_dotenv()
 
