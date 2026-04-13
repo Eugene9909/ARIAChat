@@ -21,15 +21,15 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 @app.after_request
-@app.route("/api/login", methods=["OPTIONS"])
-def login_options():
+
+def cors(response):
     response = app.make_default_options_response()    
     response.headers["Access-Control-Allow-Origin"] ="https://aria-chatapp.vercel.app"
-    response.headers["Access-Control-Allow-Headers"] ="Content-Type"
-    response.headers["Access-Control-Allow-Methods"] ="POST,  OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] ="Content-Type, Authorization"
+    response.headers["Access-Control-Allow-Methods"] ="GET, POST, OPTIONS, PUT, DELETE"
     response.headers["Access-Control-Allow-Credentials"] ="true"
     return response
-
+@app.route("/api/login", methods=["OPTIONS"])
 load_dotenv()
 
 _FEEDBACK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feedback.jsonl")
@@ -304,7 +304,7 @@ def _login_ok(username: str, password: str) -> bool:
 @app.before_request
 def _require_session_for_chat_api():
     if request.method == "OPTIONS":
-        return None
+        return "",204
     path = request.path or ""
     if not path.startswith("/api/"):
         return None
