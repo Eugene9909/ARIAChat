@@ -3,6 +3,7 @@ ARIA Chat — backend (see architecture.txt for setup and OOP overview).
 Local conversational replies — no external LLM APIs.
 """
 
+from crypt import methods
 import json
 import os
 import random
@@ -11,7 +12,8 @@ import uuid
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
 
-from flask.cli import F
+from werkzeug.wrappers import response
+
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, session
@@ -19,13 +21,14 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 @app.after_request
-def cors(response):
+@app.route("/api/login", methods=["OPTIONS"])
+def login_options():
+    response = app.make_default_options_response()    
     response.headers["Access-Control-Allow-Origin"] ="https://aria-chatapp.vercel.app"
     response.headers["Access-Control-Allow-Headers"] ="Content-Type"
-    response.headers["Access-Control-Allow-Methods"] ="GET, POST,  OPTIONS"
+    response.headers["Access-Control-Allow-Methods"] ="POST,  OPTIONS"
     response.headers["Access-Control-Allow-Credentials"] ="true"
     return response
-#CORS(app, supports_credentials=True, origins=["https://aria-chatapp.vercel.app"])
 
 load_dotenv()
 
