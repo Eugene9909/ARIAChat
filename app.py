@@ -11,10 +11,13 @@ import uuid
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
 
+from flask.cli import F
+
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, session
 from flask_cors import CORS
 
+app = Flask(__name__)
 CORS(app, origins=["https://aria-chatapp.vercel.app"])
 
 load_dotenv()
