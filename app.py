@@ -15,6 +15,8 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, request, session
 from flask_cors import CORS
 
+CORS(app, origins=["https://aria-chatapp.vercel.app"])
+
 load_dotenv()
 
 _FEEDBACK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feedback.jsonl")
