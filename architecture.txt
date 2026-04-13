@@ -9,7 +9,7 @@ pip install flask flask-cors anthropic
 ## 2. Set your API key
 
 export ANTHROPIC_API_KEY=your_key_here        # Mac/Linux
-set ANTHROPIC_API_KEY=your_key_here           # Windows
+set ANTHROPIC_API_KEY=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          # Windows
 
 ## 3. Run the backend
 
