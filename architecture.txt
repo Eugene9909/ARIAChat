@@ -1,0 +1,52 @@
+# ARIA Chat — Setup Guide
+
+# OOP Concepts: Encapsulation · Inheritance · Polymorphism
+
+## 1. Install dependencies
+
+pip install flask flask-cors anthropic
+
+## 2. Set your API key
+
+export ANTHROPIC_API_KEY=your_key_here        # Mac/Linux
+set ANTHROPIC_API_KEY=your_key_here           # Windows
+
+## 3. Run the backend
+
+python app.py
+
+# → Running on http://localhost:5000
+
+## 4. Open the frontend (chat-assistant.jsx)
+
+# Open it in the Claude artifact viewer, or run with:
+
+# npx create-react-app aria && copy files in, then npm start
+
+# This repo: from the project folder run: npm install && npm start
+
+# (Vite serves the UI and proxies /api to http://127.0.0.1:5000)
+
+## OOP Summary
+
+# ┌─────────────────────────────────────────────────────┐
+
+# │  BaseAssistant                                      │
+
+# │  ├── __memory       (private — Encapsulation)       │
+
+# │  ├── __config       (private — Encapsulation)       │
+
+# │  ├── chat()         (inherited by all subclasses)   │
+
+# │  └── build_system_prompt()  (abstract — Polymorphism│
+
+# │                                                     │
+
+# │  FriendlyAssistant  extends BaseAssistant           │
+
+# │  TechnicalAssistant extends BaseAssistant           │
+
+# │  CreativeAssistant  extends BaseAssistant           │
+
+# └─────────────────────────────────────────────────────┘
