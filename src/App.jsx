@@ -7,7 +7,7 @@ export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const refreshAuth = useCallback(() => {
-    return fetch("/api/auth", { credentials: "include" })
+    return fetch("https://ariachat.onrender.com/api/auth", { credentials: "include" })
       .then((r) => r.json())
       .then((d) => {
         setLoggedIn(!!d.logged_in);
