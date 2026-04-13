@@ -49,7 +49,7 @@ export default function App() {
   return (
     <ChatAssistant
       onLogout={() => {
-        fetch("/api/logout", { method: "POST", credentials: "include" }).finally(
+        fetch("https://ariachat.onrender.com/api/logout", { method: "POST", credentials: "include" }).finally(
           () => setLoggedIn(false)
         );
       }}
